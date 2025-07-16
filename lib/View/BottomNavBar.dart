@@ -6,14 +6,16 @@ import 'package:projects/View/Favorite.dart';
 import 'package:projects/View/Profile.dart';
 import 'package:projects/View/Shop.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+import 'HomePage.dart';
+
+class NavBar extends StatefulWidget {
+  const NavBar({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<NavBar> createState() => _NavBarState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _NavBarState extends State<NavBar> {
    final navController =  PersistentTabController();
    List<Widget> _buildScreens() {
      return [
@@ -36,7 +38,7 @@ class _HomePageState extends State<HomePage> {
          ),
        ),
        PersistentBottomNavBarItem(
-         icon: Icon(CupertinoIcons.bag_fill),
+         icon: Icon(CupertinoIcons.bag),
          title: ("Shop"),
          activeColorPrimary: CupertinoColors.activeGreen,
          inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -54,7 +56,7 @@ class _HomePageState extends State<HomePage> {
          ),
        ),
        PersistentBottomNavBarItem(
-         icon: Icon(Icons.favorite),
+         icon: Icon(Icons.favorite_border_rounded),
          title: ("Favorites"),
          activeColorPrimary: CupertinoColors.activeGreen,
          inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -89,7 +91,7 @@ class _HomePageState extends State<HomePage> {
           // Default is true.
           hideNavigationBarWhenKeyboardAppears: true,
           padding: const EdgeInsets.only(top: 8),
-          backgroundColor: Colors.grey.shade900,
+          backgroundColor: Colors.white,
           isVisible: true,
           animationSettings: const NavBarAnimationSettings(
             navBarItemAnimation: ItemAnimationSettings( // Navigation Bar's items animation properties.
@@ -105,6 +107,7 @@ class _HomePageState extends State<HomePage> {
           ),
           confineToSafeArea: true,
           navBarHeight: kBottomNavigationBarHeight,
+          navBarStyle: NavBarStyle.style3,
         )
     );
   }

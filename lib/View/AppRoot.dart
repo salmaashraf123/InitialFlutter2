@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:projects/Routes/router.dart';
+import 'package:projects/Shared/Network/local_network.dart';
 import 'package:projects/View/ThemeData/Theme.dart';
-import 'WelcomePage.dart';
+import 'package:projects/controller/Auth/auth_cubit.dart';
+import '../Routes/routes.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: WelcomePage(),
-      theme: GetTheme(),
+    return MultiBlocProvider(
+
+      providers: [
+        BlocProvider(create: (context)=> AuthCubit()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: Routes.splashPage,
+        onGenerateRoute: onGenerate,
+        theme: GetTheme(),
+      ),
     );
   }
 }
