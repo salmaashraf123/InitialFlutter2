@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:projects/View/Cart.dart';
 import 'package:projects/View/Favorite.dart';
 import 'package:projects/View/Profile.dart';
-import 'package:projects/View/Shop.dart';
+import 'package:projects/View/Category.dart';
 
 import 'HomePage.dart';
 
@@ -20,7 +21,7 @@ class _NavBarState extends State<NavBar> {
    List<Widget> _buildScreens() {
      return [
         HomePage(),
-        ShopPage(),
+        CategoryPage(),
         CartPage(),
         FavPage(),
         ProfilePage(),
@@ -39,7 +40,7 @@ class _NavBarState extends State<NavBar> {
        ),
        PersistentBottomNavBarItem(
          icon: Icon(CupertinoIcons.bag),
-         title: ("Shop"),
+         title: ("Categories"),
          activeColorPrimary: CupertinoColors.activeGreen,
          inactiveColorPrimary: CupertinoColors.systemGrey,
          routeAndNavigatorSettings: RouteAndNavigatorSettings(

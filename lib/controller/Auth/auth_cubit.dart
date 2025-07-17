@@ -57,8 +57,8 @@ class AuthCubit extends Cubit<AuthState> {
         if (responseData['access_token'] != null) {
           final accessToken = responseData['access_token'];
           final refreshToken = responseData['refresh_token'];
-          CacheNetwork.insertToCache(key: 'access_token', value: accessToken);
-          CacheNetwork.insertToCache(key: 'refresh_token', value: refreshToken);
+          await CacheNetwork.insertToCache(key: 'access_token', value: accessToken);
+          await CacheNetwork.insertToCache(key: 'refresh_token', value: refreshToken);
           emit(LoginSuccess());
         } else {
           debugPrint(

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../Routes/routes.dart';
 import '../Shared/Network/local_network.dart';
+import 'package:projects/main.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,9 +19,9 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 2), ()
     {
       if (!mounted) return;
-      String token = CacheNetwork.getCache(key: 'refresh_token') ?? "";
+      String token = CacheNetwork.getCache(key: 'access_token') ?? "";
         if (token.isNotEmpty) {
-          Navigator.pushReplacementNamed(context, Routes.homePage);
+          Navigator.pushReplacementNamed(context, Routes.navbar);
         } else {
           Navigator.pushReplacementNamed(context, Routes.loginPage);
         }
