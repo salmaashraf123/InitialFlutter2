@@ -1,11 +1,10 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'nav_bar_state.dart';
 
+class NavBarCubit extends Cubit<NavBarState> {
+  NavBarCubit() : super(NavBarInitial());
 
-class NavBarCubit extends Cubit<int> {
-  NavBarCubit() : super(0);
-  void goToTab(int index){
-    emit(index);
+  void goToTab(int index) {
+    emit(NavBarChanged(index));
   }
-
 }

@@ -49,14 +49,12 @@ class UserCubit extends Cubit<UserState> {
     );
     var responseBody = jsonDecode(response.body);
     if(response.statusCode == 200){
-       print("success");
        for(var elem in responseBody){
          products.add(ProductModel.fromJson(data: elem));
        }
        emit(ProdSuccess());
     }
     else{
-      print("failed");
       emit(ProdFailed(error : "somthing wrong"));
     }
 

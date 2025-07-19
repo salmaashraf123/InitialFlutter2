@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:projects/controller/UserProfile/user_cubit.dart';
-import 'package:projects/controller/nav_bar_cubit.dart';
-
-import '../Routes/routes.dart';
-import 'BottomNavBar.dart';
 
 
 class ConfirmationPage extends StatelessWidget {
-
   const ConfirmationPage({super.key});
 
   @override
@@ -16,26 +9,53 @@ class ConfirmationPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Order Confirmed"),
-        backgroundColor: Colors.cyan,
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text("Order Confirmed", style: TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold)),
+        backgroundColor: Color.fromRGBO(55, 6, 6, 1),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
+      body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               Icons.check_circle,
+              color: Color.fromRGBO(55, 6, 6, 1),
               size: 100,
             ),
             SizedBox(height: 24),
             Text(
               "Thank you for your order!",
+              style: TextStyle(color: Color.fromRGBO(55, 6, 6, 1),
+                  fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.popUntil(context, (route) => route.isFirst);
+              },
+              style: ElevatedButton.styleFrom(
+                fixedSize: Size(200, 50),
+                backgroundColor: Color.fromRGBO(55, 6, 6, 1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.home_outlined, color: Colors.white),
+                  SizedBox(width: 8),
+                  Text(
+                    "Back to My Cart",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

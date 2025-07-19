@@ -55,26 +55,21 @@ class AuthCubit extends Cubit<AuthState> {
         },
         body: jsonEncode({'email': email, 'password': pass}),
       );
+      var responseData = jsonDecode(response.body);
       if (response.statusCode == 201) {
-        var responseData = jsonDecode(response.body);
         if (responseData['access_token'] != null) {
           final accessToken = responseData['access_token'];
           final refreshToken = responseData['refresh_token'];
-          print(responseData['access_token']);
           await CacheNetwork.insertToCache(key: 'access_token', value: accessToken);
           await CacheNetwork.insertToCache(key: 'refresh_token', value: refreshToken);
           emit(LoginSuccess());
         } else {
-          debugPrint(
-            "failed to login , the reason is : ${responseData['message']}",
-          );
           emit(LoginFailed(message: responseData['message']));
         }
       } else {
-        debugPrint(response.statusCode.toString());
+        emit(LoginFailed(message: responseData['message']));
       }
     } catch (e) {
-      debugPrint("Unexpected error: $e");
       emit(LoginFailed(message: e.toString()));
     }
   }

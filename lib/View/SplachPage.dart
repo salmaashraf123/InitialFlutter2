@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../Routes/routes.dart';
 import '../Shared/Network/local_network.dart';
-import 'package:projects/main.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -35,22 +34,20 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
         children: [
+          SizedBox(height: 20,),
           Text(
             'Welcome to',
-            style: GoogleFonts.agdasima(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+              style:TextStyle(color: Color.fromRGBO(55, 6, 6, 1) , fontWeight: FontWeight.bold , fontSize: 20)
           ),
           Image.asset("images/LogoForSplash.png"),
           Text(
             'feeling sick ? Get your DAWAK now!',
-            style: Theme.of(context).textTheme.displayLarge,
+              style:TextStyle(color: Color.fromRGBO(55, 6, 6, 1) , fontWeight: FontWeight.bold , fontSize: 17)
           ),
+          Image.asset("images/loading.gif" , width: 150,),
         ],
       ),
     );

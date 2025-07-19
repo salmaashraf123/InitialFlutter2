@@ -49,10 +49,7 @@ class _RegisterState extends State<Register> {
                     children: [
                       Text(
                         'Register',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                        ),
+                          style:TextStyle(color: Color.fromRGBO(55, 6, 6, 1) , fontWeight: FontWeight.bold , fontSize: 30)
                       ),
                       const SizedBox(height: 80.0),
                       TextFormField(
@@ -75,7 +72,7 @@ class _RegisterState extends State<Register> {
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
                           labelText: 'Email',
-                          hintText: "Enter your Email",
+                          hintText: "Enter an Email",
                           labelStyle: Theme.of(context).textTheme.labelSmall,
                         ),
                         validator: (value) {
@@ -126,7 +123,12 @@ class _RegisterState extends State<Register> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: GetTheme().secondaryHeaderColor,
+                              fixedSize: Size(200, 50),
+                              backgroundColor: Color.fromRGBO(55, 6, 6, 1),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                             ),
                             child: Text(
                               state is RegisterLoading

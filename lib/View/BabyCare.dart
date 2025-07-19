@@ -12,103 +12,147 @@ class BabyCare extends StatelessWidget {
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
         var cubit = BlocProvider.of<UserCubit>(context);
-        var products = cubit.products
-            .where((elem) => elem.category.toString().toLowerCase() == 'baby & mommy care')
-            .toList();
+        var products =
+            cubit.products
+                .where(
+                  (elem) =>
+                      elem.category.toString().toLowerCase() ==
+                      'baby & mommy care',
+                )
+                .toList();
 
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text("Skin Care Products"),
-            centerTitle: true,
-            backgroundColor: Colors.teal,
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                var product = products[index];
+        return SafeArea(
+          child: Scaffold(
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              iconTheme: IconThemeData(color: Colors.white),
+              title: Text("Baby care"  , style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),),
+              centerTitle: true,
+              backgroundColor: Color.fromRGBO( 55,
+                6,
+                6,
+                1,),
+            ),
+            body: Column(
+              children: [
+                Expanded(
+                    child: ListView.builder(
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        var product = products[index];
 
-                return Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  margin: EdgeInsets.symmetric(vertical: 8),
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
+                        return Card(
+                          color: Colors.white,
+                          elevation: 8,
+                          shadowColor: Color.fromRGBO(120, 30, 40, 0.2),
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
-                            border: Border.all(color: Colors.grey, width: 1),
                           ),
-                          child: Image.network(
-                            product.imagePath.toString(),
-                            height:100,
-                            width: 80,
-                            fit: BoxFit.cover,
-
-                          ),
-                        ),
-                        SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                product.name!,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
+                          margin: EdgeInsets.all(8),
+                          child: Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white,
+                                  ),
+                                  child: Image.network(
+                                    product.imagePath.toString(),
+                                    height: 100,
+                                    width: 100,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                product.description!,
-                                style: const TextStyle(color: Colors.grey),
-                              ),
-                              const SizedBox(height: 6),
-                              Text(
-                                "Category: ${product.category}",
-                                style: TextStyle(fontSize: 13),
-                              ),
-                              const SizedBox(height: 6),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "${product.price} EGP",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.teal,
-                                      fontSize: 15,
-                                    ),
+                                SizedBox(width: 12),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        product.name!,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        product.description!,
+                                        style: const TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 6),
+                                      Text(
+                                        "Category: ${product.category}",
+                                        style: TextStyle(fontSize: 13),
+                                      ),
+                                      const SizedBox(height: 6),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "${product.price} EGP",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Color.fromRGBO(
+                                                55,
+                                                6,
+                                                6,
+                                                1,
+                                              ),
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                          IconButton(
+                                            onPressed: () {
+                                              final cartProvider =
+                                                  Provider.of<CartCubit>(
+                                                    context,
+                                                    listen: false,
+                                                  );
+                                              cartProvider.addCart(product);
+                                              ScaffoldMessenger.of(
+                                                context,
+                                              ).showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    '${product.name} Done',
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            icon: Icon(
+                                              Icons.add_shopping_cart,
+                                              color: Color.fromRGBO(
+                                                55,
+                                                6,
+                                                6,
+                                                1,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                  IconButton(
-                                    onPressed: () {
-                                      final cartProvider = Provider.of<CartCubit>(context, listen: false);
-                                      cartProvider.addCart(product);
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(content: Text('${product.name} Done')),
-                                      );
-                                    },
-                                    icon: const Icon(Icons.add_shopping_cart),
-                                    color: Colors.teal,
-                                  ),
-                                ],
-                              ),
-                            ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        );
+                      },
                     ),
                   ),
-                );
-              },
+              ],
             ),
-          ),
+            ),
+
         );
       },
     );

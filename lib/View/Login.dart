@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
                     children: [
                       Text(
                         'Login',
-                        style: Theme.of(context).textTheme.headlineLarge,
+                          style:TextStyle(color: Color.fromRGBO(55, 6, 6, 1) , fontWeight: FontWeight.bold , fontSize: 30)
                       ),
                       const SizedBox(height: 80.0),
                       TextFormField(
@@ -108,7 +108,12 @@ class _LoginState extends State<Login> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: GetTheme().secondaryHeaderColor,
+                              fixedSize: Size(200, 50),
+                              backgroundColor: Color.fromRGBO(55, 6, 6, 1),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                             ),
                             child: Text(
                               state is LoginLoading ? "Loading.." : "Login",
@@ -117,17 +122,6 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(text: 'forget your password? ' , style: TextStyle(color: Colors.black)),
-                                TextSpan(text: 'Click here' , style: TextStyle(color: Colors.blue)),
-                              ]
-                            )
-                        ),
-                      )
                     ],
                   ),
                 ),

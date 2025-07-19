@@ -5,7 +5,6 @@ import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:projects/View/BabyCare.dart';
 import 'package:projects/View/Checkout.dart';
 import 'package:projects/View/ConfirmationPage.dart';
-import 'package:projects/View/Favorite.dart';
 import 'package:projects/View/OtherCare.dart';
 import 'package:projects/View/PersonalCare.dart';
 import 'package:projects/View/Profile.dart';
@@ -40,8 +39,10 @@ class _NavBarState extends State<NavBar> {
             }
         ),
         CategoryPage(),
-        CartPage(),
-        ProfilePage(),
+        CartPage(
+        ),
+        ProfilePage(
+        ),
      ];
    }
    List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -49,7 +50,7 @@ class _NavBarState extends State<NavBar> {
        PersistentBottomNavBarItem(
          icon: Icon(CupertinoIcons.home),
          title: ("Home"),
-         activeColorPrimary: CupertinoColors.activeGreen,
+         activeColorPrimary: Color.fromRGBO(55, 6, 6, 1),
          inactiveColorPrimary: CupertinoColors.systemGrey,
          routeAndNavigatorSettings: RouteAndNavigatorSettings(
            initialRoute: "/",
@@ -58,7 +59,7 @@ class _NavBarState extends State<NavBar> {
        PersistentBottomNavBarItem(
          icon: Icon(CupertinoIcons.bag),
          title: ("Shop"),
-         activeColorPrimary: CupertinoColors.activeGreen,
+         activeColorPrimary: Color.fromRGBO(55, 6, 6, 1),
          inactiveColorPrimary: CupertinoColors.systemGrey,
          routeAndNavigatorSettings: RouteAndNavigatorSettings(
            initialRoute: "/",
@@ -75,7 +76,7 @@ class _NavBarState extends State<NavBar> {
        PersistentBottomNavBarItem(
          icon: Icon(CupertinoIcons.shopping_cart),
          title: ("Cart"),
-         activeColorPrimary: CupertinoColors.activeGreen,
+         activeColorPrimary: Color.fromRGBO(55, 6, 6, 1),
          inactiveColorPrimary: CupertinoColors.systemGrey,
          routeAndNavigatorSettings: RouteAndNavigatorSettings(
            initialRoute: "/",
@@ -88,7 +89,7 @@ class _NavBarState extends State<NavBar> {
        PersistentBottomNavBarItem(
          icon: Icon(CupertinoIcons.profile_circled),
          title: ("Profile"),
-         activeColorPrimary: CupertinoColors.activeGreen,
+         activeColorPrimary: Color.fromRGBO(55, 6, 6, 1),
          inactiveColorPrimary: CupertinoColors.systemGrey,
          routeAndNavigatorSettings: RouteAndNavigatorSettings(
            initialRoute: "/",
