@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class ProductModel {
   String? name;
   String? imagePath;
@@ -6,11 +8,11 @@ class ProductModel {
   double? price;
 
   ProductModel.fromJson({required Map<String , dynamic>data}){
-    name= data['name'];
-    imagePath= data['image'];
-    category= data['category'];
-    description = data['description'];
-    price = data['price'];
+    name= data['name'] as String;
+    imagePath= data['image'] as String;
+    category= data['category'] as String;
+    description = data['description'] as String;
+    price = (data['price'] as num?)?.toDouble();
   }
 
 

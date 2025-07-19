@@ -5,4 +5,5 @@ class Routes{
   static const String navbar ='/navbar';
   static const String homePage ='/home';
   static const String profilePage ='/profile';
+  static const String categoryPage ='/category';
 }

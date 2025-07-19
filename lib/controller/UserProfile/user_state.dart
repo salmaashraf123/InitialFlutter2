@@ -23,3 +23,8 @@ final class ProdFailed extends UserState {
 
 final class ProdLoading extends UserState {}
 
+final class filterSuccess extends UserState {}
+
+
+
+

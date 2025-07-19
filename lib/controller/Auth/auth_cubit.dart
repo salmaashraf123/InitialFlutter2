@@ -2,10 +2,13 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 import 'package:projects/Shared/Network/local_network.dart';
+
+import '../../View/Login.dart';
 
 part 'auth_state.dart';
 
@@ -57,6 +60,7 @@ class AuthCubit extends Cubit<AuthState> {
         if (responseData['access_token'] != null) {
           final accessToken = responseData['access_token'];
           final refreshToken = responseData['refresh_token'];
+          print(responseData['access_token']);
           await CacheNetwork.insertToCache(key: 'access_token', value: accessToken);
           await CacheNetwork.insertToCache(key: 'refresh_token', value: refreshToken);
           emit(LoginSuccess());
@@ -73,5 +77,13 @@ class AuthCubit extends Cubit<AuthState> {
       debugPrint("Unexpected error: $e");
       emit(LoginFailed(message: e.toString()));
     }
+  }
+  void logout(BuildContext context)async{
+    await CacheNetwork.deleteCacheItem(key: 'access_token');
+    await CacheNetwork.deleteCacheItem(key: 'refresh_token');
+    Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (_) => Login()),
+          (route) => false,
+    );
   }
 }

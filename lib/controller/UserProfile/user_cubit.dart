@@ -34,7 +34,12 @@ class UserCubit extends Cubit<UserState> {
     }
   }
   List<ProductModel> products = [];
-  void getProduct()async{
+  List<ProductModel> FilteredProducts = [];
+  void filter({required String input }){
+    FilteredProducts = products.where((element) => element.name!.toLowerCase().startsWith(input.toLowerCase())).toList();
+    emit(filterSuccess());
+  }
+  void getProduct({String? category})async{
     emit(ProdLoading());
     Response response = await http.get(
       Uri.parse('https://6878349b31d28a460e1d71d5.mockapi.io/api/products/products'),
@@ -54,6 +59,7 @@ class UserCubit extends Cubit<UserState> {
       print("failed");
       emit(ProdFailed(error : "somthing wrong"));
     }
+
   }
 
 }

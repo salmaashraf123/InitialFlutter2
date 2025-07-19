@@ -37,6 +37,7 @@ class _LoginState extends State<Login> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Colors.white,
+          bottomNavigationBar: null,
           body: SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),

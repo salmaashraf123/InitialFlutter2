@@ -4,8 +4,12 @@ import 'package:projects/Routes/router.dart';
 import 'package:projects/Shared/Network/local_network.dart';
 import 'package:projects/View/ThemeData/Theme.dart';
 import 'package:projects/controller/Auth/auth_cubit.dart';
+import 'package:projects/controller/Cart/cart_cubit.dart';
+import 'package:projects/controller/nav_bar_cubit.dart';
+import 'package:provider/provider.dart';
 import '../Routes/routes.dart';
 import '../controller/UserProfile/user_cubit.dart';
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,6 +19,8 @@ class MyApp extends StatelessWidget {
 
       providers: [
         BlocProvider(create: (context)=> AuthCubit()),
+        BlocProvider(create: (context)=> CartCubit()),
+        BlocProvider(create: (context)=> NavBarCubit()),
         BlocProvider(create: (context)=> UserCubit()..getProduct()),
       ],
       child: MaterialApp(
