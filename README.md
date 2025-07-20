@@ -1,11 +1,33 @@
-# projects
+# 💊 Dawak - Pharmacy E-Commerce App
 
-DAWAK Pharmacy APP.
+**Dawak** is a mobile e-commerce pharmacy application built with **Flutter**.  
+The app allows users to browse medicines, register/login securely, and view their profile info — all connected to real APIs.
 
-## Getting Started
+---
 
-Screenshots:-
+## 📱 Features
 
+- **User Authentication** (Login/Register)
+- **Product Listing** using external API
+-  **User Profile Display**
+-  **State Management** using Cubit 
+-  Clean and responsive UI design
+-  REST API integration (products & users)
+
+---
+
+## Technologies Used
+
+- **Flutter**
+- **Dart**
+- **Cubit (Bloc State Management)**
+- **RESTful APIs**
+- **Postman (for testing)**
+- **GitHub** (for collaboration)
+
+---
+
+## Screenshots
 
 ![da3](https://github.com/user-attachments/assets/ec9898f5-fbec-4e31-a0c7-8554cb534c75)
 ![da2](https://github.com/user-attachments/assets/586f32c2-33be-4230-8247-3cf5c2740005)
